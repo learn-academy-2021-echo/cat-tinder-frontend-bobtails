@@ -11,4 +11,9 @@ describe("When the Home loads...", () => {
     const renderedHome = renderedApp.find("h1")
     expect(renderedHome.length).toEqual(1)
   })
+  it("displays Home in the h1 wrapper", () => {
+    const renderedApp = shallow(<Home />)
+    const renderedHome = renderedApp.find("h1").text()
+    expect(renderedHome).toEqual('Home')
+  })
 })
