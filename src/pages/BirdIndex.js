@@ -10,6 +10,7 @@ class BirdIndex extends Component {
     return (
       <>
         <h1>BirdIndex</h1>
+        
       </>
     );
   }
