@@ -27,7 +27,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/birdindex" component={BirdIndex} />
+            <Route path="/birdindex" render={(props) => <BirdIndex birds={this.state.bird} />} />
             <Route path="/birdshow" component={BirdShow} />
             <Route path="/birdnew" component={BirdNew} />
             <Route path="/birdedit" component={BirdEdit} />
