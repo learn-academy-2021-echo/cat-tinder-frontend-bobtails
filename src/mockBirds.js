@@ -7,8 +7,8 @@ let birds = [
     name: "Blake",
     age: 18,
     enjoys: "late night feather ruffling",
-    image:""
-    // "src/assets/birds/owl.jpg"
+    image:"https://i.pinimg.com/originals/16/66/51/166651081286be1dd69920c27e89658d.jpg"
+    
   },
   {
     id: 2,

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import {
   Form,
   FormGroup,
@@ -15,7 +16,8 @@ class BirdNew extends Component {
           age:"",
           enjoys:"",
           image:""
-        }
+        },
+        submitted: false
 
 
       }
@@ -29,6 +31,7 @@ class BirdNew extends Component {
 
     handleSubmit = () => {
       this.props.createBird(this.state.newBird)
+      this.setState({submitted: true})
     }
 
   render() {
@@ -75,7 +78,7 @@ class BirdNew extends Component {
            </FormGroup>
            <button onClick={this.handleSubmit} name='submit button'>Add a New Bird</button>
         </Form>
-        {this.state.submitted && <redirect to='/birdindex' />}
+        {this.state.submitted && <Redirect to='/birdindex' />}
       </>
     );
   }
