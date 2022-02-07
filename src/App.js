@@ -23,6 +23,10 @@ class App extends Component {
     };
   }
 
+  createBird = (bird) => {
+    console.log(bird)
+  }
+
   render() {
     return (
       <>
@@ -44,11 +48,16 @@ class App extends Component {
                 return <BirdShow bird={bird} />;
               }}
             />
-            <Route path="/birdnew" component={BirdNew} />
+            <Route 
+            path="/birdnew"
+            render={(props) => <BirdNew createBird={this.createBird} />}/>
             <Route path="/birdedit" component={BirdEdit} />
             <Route component={NotFound} />
           </Switch>
         </Router>
+        
+  
+
       </>
     );
   }
