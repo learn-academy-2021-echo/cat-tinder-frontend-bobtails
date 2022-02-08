@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import { Card, CardTitle, Col, CardText } from "reactstrap";
+import { Card, CardTitle, Col, CardText, Button, NavLink } from "reactstrap";
 
 class BirdShow extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <>
@@ -20,6 +25,9 @@ class BirdShow extends Component {
         ) : (
           <p>no prob</p>
         )}
+        <NavLink to={`/birdedit/${this.props.bird.id}`}>
+          <Button>Edit Bird Profile</Button>
+        </NavLink>
       </>
     );
   }

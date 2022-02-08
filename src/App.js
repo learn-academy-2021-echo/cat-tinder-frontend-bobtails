@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -8,12 +9,7 @@ import BirdNew from "./pages/BirdNew";
 import BirdEdit from "./pages/BirdEdit";
 import NotFound from "./pages/NotFound";
 import mockBird from "./mockBirds";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  NavLink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -24,8 +20,13 @@ class App extends Component {
   }
 
   createBird = (bird) => {
-    console.log(bird)
-  }
+    console.log(bird);
+  };
+
+  updateBird = (bird, id) => {
+    console.log("bird:", bird);
+    console.log("id:", id);
+  };
 
   render() {
     return (
@@ -48,16 +49,21 @@ class App extends Component {
                 return <BirdShow bird={bird} />;
               }}
             />
-            <Route 
-            path="/birdnew"
-            render={(props) => <BirdNew createBird={this.createBird} />}/>
-            <Route path="/birdedit" component={BirdEdit} />
+            <Route
+              path="/birdnew"
+              render={(props) => <BirdNew createBird={this.createBird} />}
+            />
+            <Route
+              path="/birdedit/:id"
+              render={(props) => {
+                let id = props.match.params.id;
+                let bird = this.state.bird.find((bird) => bird.id === +id);
+                return <BirdEdit updateBird={this.updateBird} bird={bird} />;
+              }}
+            />
             <Route component={NotFound} />
           </Switch>
         </Router>
-        
-  
-
       </>
     );
   }
