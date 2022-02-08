@@ -32,5 +32,4 @@ class BirdShow extends Component {
     );
   }
 }
-
 export default BirdShow;

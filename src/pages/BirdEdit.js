@@ -37,19 +37,19 @@ class BirdEdit extends Component {
         <Form>
           <FormGroup>
             <Label for="name">Name</Label>
-            <Input type="text" name="name" />
+            <Input type="text" name="name" onChange={this.handleChange} />
           </FormGroup>
           <FormGroup>
             <Label for="age">Age</Label>
-            <Input type="number" name="age" />
+            <Input type="number" name="age" onChange={this.handleChange} />
           </FormGroup>
           <FormGroup>
             <Label for="enjoys">Enjoys</Label>
-            <Input type="text" name="enjoys" />
+            <Input type="text" name="enjoys" onChange={this.handleChange} />
           </FormGroup>
           <FormGroup>
             <Label for="image">Image URL</Label>
-            <Input type="text" name="image" />
+            <Input type="text" name="image" onChange={this.handleChange} />
           </FormGroup>
         </Form>
         {this.state.submitted && (

@@ -8,24 +8,39 @@ import BirdShow from "./pages/BirdShow";
 import BirdNew from "./pages/BirdNew";
 import BirdEdit from "./pages/BirdEdit";
 import NotFound from "./pages/NotFound";
-import mockBird from "./mockBirds";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bird: mockBird,
+      bird: [],
     };
   }
 
-  createBird = (bird) => {
-    console.log(bird);
+  componentDidMount() {
+    this.readBird();
+  }
+
+  readBird = () => {
+    fetch("http://localhost:3000/birds")
+      .then((response) => response.json())
+      .then((birdsArray) => this.setState({ bird: birdsArray }))
+      .catch((errors) => console.log("Bird read errors:", errors));
   };
 
-  updateBird = (bird, id) => {
-    console.log("bird:", bird);
-    console.log("id:", id);
+  createBird = (newBird) => {
+    fetch("http://localhost:3000/birds", {
+      body: JSON.stringify(newBird),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => response.json())
+      .then((payload) => this.readBird())
+      .catch((errors) => console.log("Bird create errors:", errors));
+    console.log("bird has been created", newBird);
   };
 
   render() {
